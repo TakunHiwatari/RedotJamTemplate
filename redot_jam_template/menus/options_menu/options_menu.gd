@@ -3,20 +3,21 @@ extends CanvasLayer
 signal back_pressed
 
 @onready var optionsContainer: MarginContainer = %OptionsContainer
+
+#display
 @onready var windowButton: Button = %WindowButton
-@onready var backButton: Button = %BackButton
-@onready var controlsButton: Button = %ControlsButton
+
+#audio
 @onready var masterSlider: HSlider = %MasterSlider
 @onready var sfxSlider: HSlider = %SfxSlider
 @onready var musicSlider: HSlider = %MusicSlider
 
-var controlsScene = preload("res://redot_jam_template/menus/controls_menu/controls_menu.tscn")
-
+#nav
+@onready var backButton: Button = %BackButton
 
 func _ready() -> void:
 	windowButton.pressed.connect(on_window_button_pressed)
 	backButton.pressed.connect(on_back_button_pressed)
-	controlsButton.pressed.connect(on_controls_button_pressed)
 	masterSlider.value_changed.connect(on_audio_slider_changed.bind("Master"))
 	sfxSlider.value_changed.connect(on_audio_slider_changed.bind("Sfx"))
 	musicSlider.value_changed.connect(on_audio_slider_changed.bind("Music"))
@@ -58,20 +59,6 @@ func on_window_button_pressed() -> void:
 
 func on_back_button_pressed() -> void:
 	back_pressed.emit()
-
-
-func on_controls_button_pressed() -> void:
-	var controlsInstance = controlsScene.instantiate()
-	add_child(controlsInstance)
-	optionsContainer.visible = false
-	controlsInstance.back_pressed.connect(on_controls_closed.bind(controlsInstance))
-
-
-func on_controls_closed(controlsInstance: Node) -> void:
-	controlsInstance.queue_free()
-	optionsContainer.visible = true
-	controlsButton.grab_focus()
-
 
 func on_audio_slider_changed(value: float, busName: String) -> void:
 	set_bus_volume_percent(busName, value)
