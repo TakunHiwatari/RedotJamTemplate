@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://whqv2y330fbm"]
+[gd_scene load_steps=3 format=3 uid="uid://whqv2y330fbm"]
 
 [ext_resource type="Script" path="res://redot_jam_template/menus/options_menu/options_menu.gd" id="1_ibpiv"]
+[ext_resource type="PackedScene" uid="uid://d2d0ij6ik4x3e" path="res://redot_jam_template/menus/controls_menu/controls_menu.tscn" id="2_v0jrs"]
 
 [node name="OptionsMenu" type="CanvasLayer"]
 layer = 2
@@ -8,22 +9,20 @@ script = ExtResource("1_ibpiv")
 
 [node name="OptionsContainer" type="MarginContainer" parent="."]
 unique_name_in_owner = true
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
 
-[node name="PanelContainer" type="PanelContainer" parent="OptionsContainer"]
+[node name="Panel" type="Panel" parent="OptionsContainer"]
 layout_mode = 2
 
-[node name="Panel" type="Panel" parent="OptionsContainer/PanelContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="OptionsContainer"]
 layout_mode = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="OptionsContainer/PanelContainer"]
@@ -41,17 +40,46 @@ layout_mode = 2
 text = "Options"
 horizontal_alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="OptionsContainer/PanelContainer/MarginContainer/OptionsContainer"]
+[node name="TabContainer" type="TabContainer" parent="OptionsContainer/PanelContainer/MarginContainer/OptionsContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+current_tab = 0
+
+[node name="Display" type="CenterContainer" parent="OptionsContainer/PanelContainer/MarginContainer/OptionsContainer/TabContainer"]
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="OptionsContainer/PanelContainer/MarginContainer/OptionsContainer/TabContainer/Display"]
 layout_mode = 2
 
-[node name="MasterContainer" type="VBoxContainer" parent="OptionsContainer/PanelContainer/MarginContainer/OptionsContainer/VBoxContainer"]
+[node name="HBoxContainer" type="VBoxContainer" parent="OptionsContainer/PanelContainer/MarginContainer/OptionsContainer/TabContainer/Display/VBoxContainer"]
 layout_mode = 2
 
-[node name="MasterLabel" type="Label" parent="OptionsContainer/PanelContainer/MarginContainer/OptionsContainer/VBoxContainer/MasterContainer"]
+[node name="WindowLabel" type="Label" parent="OptionsContainer/PanelContainer/MarginContainer/OptionsContainer/TabContainer/Display/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Window Mode"
+
+[node name="WindowButton" type="Button" parent="OptionsContainer/PanelContainer/MarginContainer/OptionsContainer/TabContainer/Display/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Windowed"
+
+[node name="Audio" type="CenterContainer" parent="OptionsContainer/PanelContainer/MarginContainer/OptionsContainer/TabContainer"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="OptionsContainer/PanelContainer/MarginContainer/OptionsContainer/TabContainer/Audio"]
+layout_mode = 2
+
+[node name="MasterContainer" type="VBoxContainer" parent="OptionsContainer/PanelContainer/MarginContainer/OptionsContainer/TabContainer/Audio/VBoxContainer"]
+layout_mode = 2
+
+[node name="MasterLabel" type="Label" parent="OptionsContainer/PanelContainer/MarginContainer/OptionsContainer/TabContainer/Audio/VBoxContainer/MasterContainer"]
 layout_mode = 2
 text = "Master Volume"
 
-[node name="MasterSlider" type="HSlider" parent="OptionsContainer/PanelContainer/MarginContainer/OptionsContainer/VBoxContainer/MasterContainer"]
+[node name="MasterSlider" type="HSlider" parent="OptionsContainer/PanelContainer/MarginContainer/OptionsContainer/TabContainer/Audio/VBoxContainer/MasterContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 focus_neighbor_bottom = NodePath("../../SfxContainer/SfxSlider")
@@ -59,14 +87,14 @@ focus_next = NodePath("../../SfxContainer/SfxSlider")
 max_value = 1.0
 step = 0.01
 
-[node name="SfxContainer" type="VBoxContainer" parent="OptionsContainer/PanelContainer/MarginContainer/OptionsContainer/VBoxContainer"]
+[node name="SfxContainer" type="VBoxContainer" parent="OptionsContainer/PanelContainer/MarginContainer/OptionsContainer/TabContainer/Audio/VBoxContainer"]
 layout_mode = 2
 
-[node name="SfxLabel" type="Label" parent="OptionsContainer/PanelContainer/MarginContainer/OptionsContainer/VBoxContainer/SfxContainer"]
+[node name="SfxLabel" type="Label" parent="OptionsContainer/PanelContainer/MarginContainer/OptionsContainer/TabContainer/Audio/VBoxContainer/SfxContainer"]
 layout_mode = 2
 text = "SFX Volume"
 
-[node name="SfxSlider" type="HSlider" parent="OptionsContainer/PanelContainer/MarginContainer/OptionsContainer/VBoxContainer/SfxContainer"]
+[node name="SfxSlider" type="HSlider" parent="OptionsContainer/PanelContainer/MarginContainer/OptionsContainer/TabContainer/Audio/VBoxContainer/SfxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 focus_neighbor_top = NodePath("../../MasterContainer/MasterSlider")
@@ -76,14 +104,14 @@ focus_previous = NodePath("../../MasterContainer/MasterSlider")
 max_value = 1.0
 step = 0.01
 
-[node name="MusicContainer" type="VBoxContainer" parent="OptionsContainer/PanelContainer/MarginContainer/OptionsContainer/VBoxContainer"]
+[node name="MusicContainer" type="VBoxContainer" parent="OptionsContainer/PanelContainer/MarginContainer/OptionsContainer/TabContainer/Audio/VBoxContainer"]
 layout_mode = 2
 
-[node name="MusicLabel" type="Label" parent="OptionsContainer/PanelContainer/MarginContainer/OptionsContainer/VBoxContainer/MusicContainer"]
+[node name="MusicLabel" type="Label" parent="OptionsContainer/PanelContainer/MarginContainer/OptionsContainer/TabContainer/Audio/VBoxContainer/MusicContainer"]
 layout_mode = 2
 text = "Music Volume"
 
-[node name="MusicSlider" type="HSlider" parent="OptionsContainer/PanelContainer/MarginContainer/OptionsContainer/VBoxContainer/MusicContainer"]
+[node name="MusicSlider" type="HSlider" parent="OptionsContainer/PanelContainer/MarginContainer/OptionsContainer/TabContainer/Audio/VBoxContainer/MusicContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 focus_neighbor_top = NodePath("../../SfxContainer/SfxSlider")
@@ -91,27 +119,18 @@ focus_previous = NodePath("../../SfxContainer/SfxSlider")
 max_value = 1.0
 step = 0.01
 
-[node name="WindowContainer" type="VBoxContainer" parent="OptionsContainer/PanelContainer/MarginContainer/OptionsContainer/VBoxContainer"]
+[node name="Controls" type="CenterContainer" parent="OptionsContainer/PanelContainer/MarginContainer/OptionsContainer/TabContainer"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 2
+
+[node name="ControlsMenu" parent="OptionsContainer/PanelContainer/MarginContainer/OptionsContainer/TabContainer/Controls" instance=ExtResource("2_v0jrs")]
 layout_mode = 2
 
-[node name="WindowLabel" type="Label" parent="OptionsContainer/PanelContainer/MarginContainer/OptionsContainer/VBoxContainer/WindowContainer"]
-layout_mode = 2
-text = "Window Mode"
-
-[node name="WindowButton" type="Button" parent="OptionsContainer/PanelContainer/MarginContainer/OptionsContainer/VBoxContainer/WindowContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-text = "Windowed"
-
-[node name="ControlsContainer" type="VBoxContainer" parent="OptionsContainer/PanelContainer/MarginContainer/OptionsContainer/VBoxContainer"]
+[node name="CenterContainer" type="CenterContainer" parent="OptionsContainer/PanelContainer/MarginContainer/OptionsContainer"]
 layout_mode = 2
 
-[node name="ControlsButton" type="Button" parent="OptionsContainer/PanelContainer/MarginContainer/OptionsContainer/VBoxContainer/ControlsContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-text = "Controls"
-
-[node name="BackButton" type="Button" parent="OptionsContainer/PanelContainer/MarginContainer/OptionsContainer/VBoxContainer"]
+[node name="BackButton" type="Button" parent="OptionsContainer/PanelContainer/MarginContainer/OptionsContainer/CenterContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Back"
