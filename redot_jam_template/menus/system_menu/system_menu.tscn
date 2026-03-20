@@ -1,0 +1,58 @@
+[gd_scene load_steps=3 format=3 uid="uid://qp6frcjgk87q"]
+
+[ext_resource type="Script" uid="uid://cx0y7n5eo0bd1" path="res://redot_jam_template/menus/system_menu/system_menu.gd" id="1_em7g8"]
+[ext_resource type="PackedScene" uid="uid://dltml7ycr2tbt" path="res://redot_jam_template/menus/title_screen/title_screen.tscn" id="2_sodbp"]
+
+[node name="System" type="MarginContainer"]
+process_mode = 3
+script = ExtResource("1_em7g8")
+titleScreen = ExtResource("2_sodbp")
+metadata/_tab_index = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 16
+
+[node name="OptionsContainer" type="VBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="OptionsLabel" type="Label" parent="VBoxContainer/OptionsContainer"]
+layout_mode = 2
+text = "Options"
+horizontal_alignment = 1
+
+[node name="AudioButton" type="Button" parent="VBoxContainer/OptionsContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Audio"
+
+[node name="ControlsButton" type="Button" parent="VBoxContainer/OptionsContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Controls"
+
+[node name="DisplayButton" type="Button" parent="VBoxContainer/OptionsContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Display"
+
+[node name="WindowContainer" type="VBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="WindowLabel" type="Label" parent="VBoxContainer/WindowContainer"]
+layout_mode = 2
+text = "Window Mode"
+horizontal_alignment = 1
+
+[node name="WindowButton" type="Button" parent="VBoxContainer/WindowContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Windowed
+"
+
+[node name="ReturnButton" type="Button" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Return to Title Screen"

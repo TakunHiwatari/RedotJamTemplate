@@ -1,0 +1,89 @@
+[gd_scene load_steps=2 format=3 uid="uid://bvq3x8p2mndfc"]
+
+[ext_resource type="Script" uid="uid://dm7r4n0yqx8c2" path="res://redot_jam_template/menus/display_menu/display_menu.gd" id="1_displaygd"]
+
+[node name="DisplayMenu" type="CanvasLayer"]
+layer = 2
+script = ExtResource("1_displaygd")
+
+[node name="DisplayContainer" type="MarginContainer" parent="."]
+unique_name_in_owner = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="DisplayContainer"]
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="DisplayContainer/PanelContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="DisplayContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="DisplayContent" type="VBoxContainer" parent="DisplayContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="DisplayLabel" type="Label" parent="DisplayContainer/PanelContainer/MarginContainer/DisplayContent"]
+layout_mode = 2
+text = "Display"
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="DisplayContainer/PanelContainer/MarginContainer/DisplayContent"]
+layout_mode = 2
+
+[node name="AspectContainer" type="VBoxContainer" parent="DisplayContainer/PanelContainer/MarginContainer/DisplayContent/VBoxContainer"]
+layout_mode = 2
+
+[node name="AspectLabel" type="Label" parent="DisplayContainer/PanelContainer/MarginContainer/DisplayContent/VBoxContainer/AspectContainer"]
+layout_mode = 2
+text = "Aspect Ratio"
+
+[node name="AspectOptionButton" type="OptionButton" parent="DisplayContainer/PanelContainer/MarginContainer/DisplayContent/VBoxContainer/AspectContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+focus_neighbor_bottom = NodePath("../../ResolutionContainer/ResolutionOptionButton")
+focus_next = NodePath("../../ResolutionContainer/ResolutionOptionButton")
+
+[node name="ResolutionContainer" type="VBoxContainer" parent="DisplayContainer/PanelContainer/MarginContainer/DisplayContent/VBoxContainer"]
+layout_mode = 2
+
+[node name="ResolutionLabel" type="Label" parent="DisplayContainer/PanelContainer/MarginContainer/DisplayContent/VBoxContainer/ResolutionContainer"]
+layout_mode = 2
+text = "Resolution"
+
+[node name="ResolutionOptionButton" type="OptionButton" parent="DisplayContainer/PanelContainer/MarginContainer/DisplayContent/VBoxContainer/ResolutionContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+focus_neighbor_top = NodePath("../../AspectContainer/AspectOptionButton")
+focus_neighbor_bottom = NodePath("../../../ApplyButton")
+focus_next = NodePath("../../../ApplyButton")
+focus_previous = NodePath("../../AspectContainer/AspectOptionButton")
+
+[node name="ApplyButton" type="Button" parent="DisplayContainer/PanelContainer/MarginContainer/DisplayContent/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+focus_neighbor_top = NodePath("../ResolutionContainer/ResolutionOptionButton")
+focus_neighbor_bottom = NodePath("../BackButton")
+focus_next = NodePath("../BackButton")
+focus_previous = NodePath("../ResolutionContainer/ResolutionOptionButton")
+text = "Apply"
+
+[node name="BackButton" type="Button" parent="DisplayContainer/PanelContainer/MarginContainer/DisplayContent/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+focus_neighbor_top = NodePath("../ApplyButton")
+focus_previous = NodePath("../ApplyButton")
+text = "Back"

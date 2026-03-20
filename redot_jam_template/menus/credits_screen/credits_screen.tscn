@@ -1,10 +1,10 @@
 [gd_scene load_steps=2 format=3 uid="uid://qfmbosjo0w33"]
 
-[ext_resource type="Script" path="res://redot_jam_template/menus/credits_menu/credits_menu.gd" id="1_4f8x3"]
+[ext_resource type="Script" uid="uid://bnnnicwfgyytn" path="res://redot_jam_template/menus/credits_screen/credits_screen.gd" id="1_cgqu2"]
 
-[node name="CreditsMenu" type="CanvasLayer"]
+[node name="CreditsScreen" type="CanvasLayer"]
 layer = 2
-script = ExtResource("1_4f8x3")
+script = ExtResource("1_cgqu2")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 anchors_preset = 15

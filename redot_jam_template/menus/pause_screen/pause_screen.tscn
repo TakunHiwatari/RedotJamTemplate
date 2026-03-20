@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://2h45onv2itwh"]
+
+[ext_resource type="PackedScene" uid="uid://qp6frcjgk87q" path="res://redot_jam_template/menus/system_menu/system_menu.tscn" id="1_qop40"]
+
+[node name="PauseScreen" type="CanvasLayer"]
+process_mode = 3
+
+[node name="TabContainer" type="TabContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+tab_alignment = 1
+current_tab = 0
+
+[node name="System" parent="TabContainer" instance=ExtResource("1_qop40")]
+layout_mode = 2

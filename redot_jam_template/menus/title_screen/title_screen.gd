@@ -8,8 +8,8 @@ extends CanvasLayer
 @onready var creditsButton: Button = %CreditsButton
 @onready var quitButton: Button = %QuitButton
 
-var optionsScene = preload("res://redot_jam_template/menus/options_menu/options_menu.tscn")
-var creditsScene = preload("res://redot_jam_template/menus/credits_menu/credits_menu.tscn")
+var optionsScene = preload(Constants.MENUS.Options)
+var creditsScene = preload(Constants.MENUS.Credits)
 
 
 func _ready() -> void:

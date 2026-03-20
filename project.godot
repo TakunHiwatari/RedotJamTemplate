@@ -12,8 +12,12 @@ config_version=5
 
 config/name="Redot Game Jam Template"
 config/tags=PackedStringArray("redot", "template")
-config/features=PackedStringArray("4.3", "GL Compatibility")
+config/features=PackedStringArray("26.1", "GL Compatibility", "Redot")
 config/icon="res://icon.svg"
+
+[audio]
+
+buses/default_bus_layout="res://redot_jam_template/default_bus_layout.tres"
 
 [editor_plugins]
 

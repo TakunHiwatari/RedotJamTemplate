@@ -1,25 +1,32 @@
 [gd_scene load_steps=2 format=3 uid="uid://d2d0ij6ik4x3e"]
 
-[ext_resource type="Script" path="res://redot_jam_template/menus/controls_menu/controls_menu.gd" id="1_v2cuq"]
+[ext_resource type="Script" uid="uid://c8qxhv16d2rc3" path="res://redot_jam_template/menus/controls_menu/controls_menu.gd" id="1_v2cuq"]
 
-[node name="ControlsMenu" type="MarginContainer"]
+[node name="ControlsMenu" type="CanvasLayer"]
+layer = 3
+script = ExtResource("1_v2cuq")
+
+[node name="MainContainer" type="MarginContainer" parent="."]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_v2cuq")
-inputs = Array[String](["test"])
 
-[node name="MainPanel" type="Panel" parent="."]
+[node name="MainPanel" type="Panel" parent="MainContainer"]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="MainContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="RemapContainer" type="GridContainer" parent="VBoxContainer"]
+[node name="RemapContainer" type="GridContainer" parent="MainContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 columns = 2
+
+[node name="BackButton" type="Button" parent="MainContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Back"
