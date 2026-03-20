@@ -1,8 +1,1 @@
-res://redot_jam_template/menus/title_screen/title_screen.tscn
-res://themes/ui.tres
-res://redot_jam_template/menus/system_menu/system_menu.tscn
 res://redot_jam_template/menus/pause_screen/pause_screen.tscn
-res://redot_jam_template/menus/options_menu/options_menu.tscn
-res://redot_jam_template/menus/display_menu/display_menu.tscn
-res://redot_jam_template/menus/credits_screen/credits_screen.tscn
-res://redot_jam_template/menus/controls_menu/controls_menu.tscn
